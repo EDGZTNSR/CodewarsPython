@@ -1,0 +1,15 @@
+Test Cases:
+@test.describe("Fixed tests")
+def fixed_tests():
+    Test.assert_equals(predict_age(65,60,75,55,60,63,64,45), 86)
+    Test.assert_equals(predict_age(32,54,76,65,34,63,64,45), 79)
+
+@test.describe("Random tests")
+def random_tests():
+    import random, functools, operator
+    
+    _solution = lambda *a: sum(x**2 for x in a)**0.5 // 2
+    
+    for _ in range(100):
+        arr = [random.randint(40, 90) for _ in range(8)]
+        Test.assert_equals(predict_age(*arr), _solution(*arr))
